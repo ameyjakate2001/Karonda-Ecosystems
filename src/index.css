@@ -21,8 +21,8 @@ main {
   text-align: center;
 }
 .upper {
-  /* width: 600px; */
-  margin: 0 auto;
+ width: 600ox;
+  text-align: center;
 }
 input {
   width: 60%;
@@ -72,4 +72,9 @@ li {
 }
 .pagination {
   margin-top: 30px;
+  justify-content: center;
+}
+.overview {
+  height: 200px;
+  overflow: hidden;
 }

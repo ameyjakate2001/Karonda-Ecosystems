@@ -7,7 +7,10 @@ const ResultScreen = ({ results }) => {
   return (
     <div>
       <Link to='/'>
-        <Button variant='success' style={{ margin: '10px 0' }}>
+        <Button
+          variant='success'
+          style={{ margin: '18px 0', width: '100%', textAlign: 'center' }}
+        >
           GO BACK
         </Button>
       </Link>

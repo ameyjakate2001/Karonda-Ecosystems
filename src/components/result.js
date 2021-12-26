@@ -3,7 +3,7 @@ import { Card } from 'react-bootstrap'
 
 const Result = ({ element }) => {
   return (
-    <Card style={{ minHeight: '500px', margin: '0 5px' }}>
+    <Card style={{ Height: '500px', overflow: 'hidden', margin: '0 5px' }}>
       {!element.poster_path ? (
         <h3>No Image</h3>
       ) : (
@@ -14,7 +14,12 @@ const Result = ({ element }) => {
       )}
       <Card.Body>
         <Card.Title>{element.original_title}</Card.Title>
-        <Card.Text>{element.overview}</Card.Text>
+        {element.overview === '' ? (
+          <h6>No overview</h6>
+        ) : (
+          <Card.Text className='overview'>{element.overview}</Card.Text>
+        )}
+
         <Card.Footer className='text-muted'>
           Rating - {element.popularity}
         </Card.Footer>
