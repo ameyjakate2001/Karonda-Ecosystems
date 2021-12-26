@@ -44,5 +44,3 @@ const ResultScreen = ({ results }) => {
 }
 
 export default ResultScreen
-
-// style={{display:"flex"; flexDirection:"row"; backgroundImage: "url('https://image.tmdb.org/t/p/w500${element.poster_path}')"; backgroundPosition: "center center"; backgroundSize: "cover";  backgroundRepeat: "no-repeat" "}}

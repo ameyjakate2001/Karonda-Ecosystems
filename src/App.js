@@ -5,17 +5,15 @@ import ResultScreen from './screens/resultScreen'
 import axios from 'axios'
 
 function App() {
-  const [name, setName] = useState('')
   const [results, setResults] = useState([])
   const [searches, setSearches] = useState([])
   const navigate = useNavigate()
 
-  // useEffect(() => {
-  //   setSearches(JSON.parse(localStorage.getItem('mySearches')))
-  // }, [])
+  useEffect(() => {
+    setSearches(JSON.parse(localStorage.getItem('mySearches')))
+  }, [])
 
   const HandleSearch = async (query) => {
-    setName(query)
     const URL = `https://api.themoviedb.org/3/search/movie?api_key=f523881edc8aa02fdd93a75595a43c58&language=en-US&query=${query} &page=1&include_adult=false`
     const res = await axios.get(URL)
     const { results } = res.data
@@ -36,7 +34,7 @@ function App() {
       localStorage.setItem('mySearches', JSON.stringify(allSearches))
     }
 
-    searches(searchesFromLocalStorage)
+    setSearches(searchesFromLocalStorage)
 
     navigate('/result?q=' + query)
   }
@@ -56,9 +54,10 @@ function App() {
         <Route path='/result' element={<ResultScreen results={results} />} />
       </Routes>
 
-      {/* <ul>
+      <h6>Your searches</h6>
+      <ul>
         {searches && searches.map((q, index) => <li key={index}>{q}</li>)}
-      </ul> */}
+      </ul>
     </main>
   )
 }
