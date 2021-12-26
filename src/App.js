@@ -3,10 +3,14 @@ import { useState, useEffect } from 'react'
 import SearchScreen from './screens/searchScreen'
 import ResultScreen from './screens/resultScreen'
 import axios from 'axios'
+import Pagination from './components/pagination'
 
 function App() {
   const [results, setResults] = useState([])
   const [searches, setSearches] = useState([])
+  const [currentPage, setCurrentPage] = useState(1)
+  const [postPerPage] = useState(5)
+
   const navigate = useNavigate()
 
   useEffect(() => {
@@ -39,6 +43,15 @@ function App() {
     navigate('/result?q=' + query)
   }
 
+  //Get Current Posts
+  const indexOfLastPost = currentPage * postPerPage
+  const indexOfFirstPost = indexOfLastPost - postPerPage
+  const currentPosts = results.slice(indexOfFirstPost, indexOfLastPost)
+
+  const paginate = (pageNumber) => {
+    setCurrentPage(pageNumber)
+  }
+
   return (
     <main>
       <h3 style={{ textAlign: 'center', margin: '0.8em 0' }}>Movie Search</h3>
@@ -51,8 +64,18 @@ function App() {
             <SearchScreen HandleSearch={(input) => HandleSearch(input)} />
           }
         />
-        <Route path='/result' element={<ResultScreen results={results} />} />
+        <Route
+          path='/result'
+          element={<ResultScreen results={currentPosts} />}
+        />
       </Routes>
+      {window.location.pathname === '/result' && (
+        <Pagination
+          postPerPage={postPerPage}
+          totalPosts={results.length}
+          paginate={paginate}
+        />
+      )}
 
       <div className='history'>
         <h4>Your searches</h4>

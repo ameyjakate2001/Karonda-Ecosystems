@@ -17,7 +17,7 @@ const ResultScreen = ({ results }) => {
         <Row>
           {results.map((element) => (
             <Col sm={12} md={4} xl={3}>
-              <Result element={element} />
+              <Result key={element} element={element} />
             </Col>
           ))}
         </Row>
