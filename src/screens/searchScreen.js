@@ -33,7 +33,6 @@ const SearchScreen = ({ HandleSearch }) => {
     if (input === '') {
       alert('please type something')
     } else {
-      alert(`searched ${input}`)
       HandleSearch(input)
     }
   }
