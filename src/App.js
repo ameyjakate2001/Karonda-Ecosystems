@@ -54,10 +54,12 @@ function App() {
         <Route path='/result' element={<ResultScreen results={results} />} />
       </Routes>
 
-      <h6>Your searches</h6>
-      <ul>
-        {searches && searches.map((q, index) => <li key={index}>{q}</li>)}
-      </ul>
+      <div className='history'>
+        <h4>Your searches</h4>
+        <ul>
+          {searches && searches.map((q, index) => <li key={index}>{q}</li>)}
+        </ul>
+      </div>
     </main>
   )
 }

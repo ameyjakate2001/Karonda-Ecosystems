@@ -55,3 +55,18 @@ input:focus {
   max-width: 850px;
   margin:50px auto;
 }
+
+.history{
+  text-align: center;
+  max-width: 50%;
+  margin: 20px auto;
+}
+ul {
+  list-style: none;
+}
+li {
+  padding: 10px;
+  margin: 5px 0;
+  background: black;
+  color: #fff;
+}
